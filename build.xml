@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<project name="slf4fp" default="help" basedir=".">
+	
+	<property file="local.properties"/>
+	
+	<property file="build.properties"/>
+	
+	<target name="help">
+
+	</target>
+
+	<target name="setup">
+		<taskdef classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"
+			resource="flexTasks.tasks"/>
+	</target>
+
+	<target name="setup.main" depends="setup">
+	
+	</target>
+	
+	<target name="setup.test" depends="setup">
+	
+	</target>
+	
+	<target name="compile.slf4fp-api.main" depends="setup.main">
+		<compc output="${slf4fp-api.main.bin.file}" incremental="true">
+			<source-path path-element="${slf4fp-api.main.src.dir}"/>
+			<source-path path-element="${slf4fp-noop.main.src.dir}"/>
+			<include-sources dir="${slf4fp-api.main.src.dir}">
+				<include name="*"/>
+				<exclude name="*StaticLoggerBinder.as"/>
+			</include-sources>
+			<include-sources  dir="${slf4fp-noop.main.src.dir}">
+				<include name="*"/>
+			</include-sources>
+		</compc>
+	</target>
+	
+	<target name="compile.slf4fp-api.test" depends="setup.test">
+	
+	</target>
+	
+	<target name="unittest.slf4fp-api" depends="compile.slf4fp-api.test">
+	
+	</target>
+</project>
